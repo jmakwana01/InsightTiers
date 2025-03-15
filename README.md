@@ -5,6 +5,7 @@
 InsightTiers is built as a modern React application that communicates with smart contracts deployed on the Polygon network. The system follows a client-centric architecture with blockchain interaction.
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 graph TD
     User([User])
     Web[Web Application]
@@ -28,15 +29,14 @@ graph TD
     
     subgraph "Blockchain"
         SC
+        Database
     end
     
-    classDef frontend fill:#c2e0ff,stroke:#05a5d1,stroke-width:2px;
-    classDef web3 fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
-    classDef blockchain fill:#bad991,stroke:#83d01b,stroke-width:2px;
-    
-    class Web frontend;
-    class WalletP web3;
-    class SC,Database blockchain;
+    style User stroke-width:2px
+    style Web stroke-width:2px
+    style WalletP stroke-width:2px
+    style SC stroke-width:2px
+    style Database stroke-width:2px
 ```
 
 ### Architecture Components
@@ -64,6 +64,7 @@ graph TD
 The three smart contracts work together to create the complete system:
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 graph TD
     User([User])
     BlogToken[BlogToken Contract]
@@ -77,8 +78,10 @@ graph TD
     Staking -->|Locks tokens| BlogToken
     User -->|Checks tier| Staking
     
-    classDef contract fill:#f9d9d4,stroke:#d1605a,stroke-width:2px;
-    class BlogToken,Staking,Minter contract;
+    style User stroke-width:2px
+    style BlogToken stroke-width:2px,stroke-dasharray:5 5
+    style Staking stroke-width:2px,stroke-dasharray:5 5
+    style Minter stroke-width:2px,stroke-dasharray:5 5
 ```
 
 ## React Component Architecture
@@ -86,6 +89,7 @@ graph TD
 We designed the component structure following the Atomic Design methodology with a focus on reusability and separation of concerns:
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 graph TD
     App[App.jsx]
     Pages[Page Components]
@@ -141,11 +145,11 @@ graph TD
     Content --> SilverContent
     Content --> GoldContent
     
-    classDef container fill:#e6f7ff,stroke:#1890ff,stroke-width:2px;
-    classDef component fill:#e1eaff,stroke:#52c41a,stroke-width:2px;
-    
-    class App,Pages,Layout,UI,Content container;
-    class Dashboard,LandingPage,MintPage,StakePage,Header,Footer,Button,Card,Input,Loader,BronzeContent,SilverContent,GoldContent component;
+    style App stroke-width:2px
+    style Pages stroke-width:2px
+    style Layout stroke-width:2px
+    style UI stroke-width:2px
+    style Content stroke-width:2px
 ```
 
 ### Custom Hooks Flow
@@ -153,6 +157,7 @@ graph TD
 The application leverages several custom hooks to encapsulate and reuse logic:
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 flowchart TD
     A[App Component] --> B[useWallet Hook]
     B --> C[connectWallet]
@@ -171,13 +176,8 @@ flowchart TD
     M --> N[Delayed State Update]
     N --> O[API/Contract Call]
     
-    classDef hook fill:#f0f0ff,stroke:#8080ff,stroke-width:2px;
-    classDef function fill:#fffff0,stroke:#d6ce14,stroke-width:2px;
-    classDef action fill:#fff0f0,stroke:#ff8080,stroke-width:2px;
-    
-    class B,M hook;
-    class C,D,E,F,N,O function;
-    class G,H,I,J,K,L action;
+    style B stroke-width:2px,stroke-dasharray:5 5
+    style M stroke-width:2px,stroke-dasharray:5 5
 ```
 
 #### `useWallet`
@@ -262,6 +262,7 @@ We use React's built-in state management through hooks rather than external libr
 3. Only a few pieces of state need to be shared globally (wallet connection, user tier)
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 graph TD
     App[App.jsx]
     DP[Dashboard Page]
@@ -291,10 +292,12 @@ graph TD
     SP --> SPS
     LP --> LPS
     
-    
-    class WS,TS globalState;
-    class MPS,SPS,LPS localState;
-    class App,DP,MP,SP,LP component;
+    style App stroke-width:2px
+    style WS stroke-width:2px,stroke-dasharray:5 5
+    style TS stroke-width:2px,stroke-dasharray:5 5
+    style MPS stroke-width:2px,stroke-dasharray:5 5
+    style SPS stroke-width:2px,stroke-dasharray:5 5
+    style LPS stroke-width:2px,stroke-dasharray:5 5
 ```
 
 State management approach:
@@ -309,6 +312,7 @@ State management approach:
 The application implements a robust transaction flow:
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 sequenceDiagram
     participant User
     participant React App
@@ -365,6 +369,7 @@ const stakeTokens = async () => {
 The application implements a tier-based content delivery system:
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 graph TD
     User([User])
     CheckTier{Check User Tier}
@@ -384,13 +389,12 @@ graph TD
     Toggle -->|Select Silver| Silver
     Toggle -->|Select Gold| Gold
     
-    classDef check fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
-    classDef content fill:#bad991,stroke:#83d01b,stroke-width:2px;
-    classDef noAccess fill:#f9d9d4,stroke:#d1605a,stroke-width:2px;
-    
-    class CheckTier,Toggle check;
-    class Bronze,Silver,Gold content;
-    class NoAccess noAccess;
+    style CheckTier stroke-width:2px
+    style Toggle stroke-width:2px
+    style Bronze stroke-width:2px
+    style Silver stroke-width:2px
+    style Gold stroke-width:2px
+    style NoAccess stroke-width:2px,stroke-dasharray:5 5
 ```
 
 ```javascript
@@ -413,7 +417,7 @@ const ContentDisplay = ({ userTier }) => {
 The application implements several loading states to provide clear feedback during blockchain operations:
 
 ```mermaid
-
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 stateDiagram-v2
     [*] --> Idle
     
@@ -445,6 +449,7 @@ stateDiagram-v2
 Visual representation of component relationships:
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 classDiagram
     Component <|-- Button
     Component <|-- Card
@@ -511,43 +516,45 @@ classDiagram
 The application uses Tailwind CSS for responsive design. Here's a visual representation of how components adapt to different screen sizes:
 
 ```
-┌─────────────────────────────────────────────┐
-│                   Mobile                    │
-├─────────────────────────────────────────────┤
-│ ┌─────────────────────────────────────────┐ │
-│ │               Status Card 1             │ │
-│ └─────────────────────────────────────────┘ │
-│ ┌─────────────────────────────────────────┐ │
-│ │               Status Card 2             │ │
-│ └─────────────────────────────────────────┘ │
-│ ┌─────────────────────────────────────────┐ │
-│ │               Status Card 3             │ │
-│ └─────────────────────────────────────────┘ │
-│                                             │
-│ ┌─────────────────────────────────────────┐ │
-│ │                                         │ │
-│ │                                         │ │
-│ │              Content Area               │ │
-│ │                                         │ │
-│ │                                         │ │
-│ └─────────────────────────────────────────┘ │
-└─────────────────────────────────────────────┘
+┌────────────────────────────────────┐
+│             Mobile View            │
+├────────────────────────────────────┤
+│ ┌──────────────────────────────┐   │
+│ │        Status Card 1         │   │
+│ └──────────────────────────────┘   │
+│                                    │
+│ ┌──────────────────────────────┐   │
+│ │        Status Card 2         │   │
+│ └──────────────────────────────┘   │
+│                                    │
+│ ┌──────────────────────────────┐   │
+│ │        Status Card 3         │   │
+│ └──────────────────────────────┘   │
+│                                    │
+│ ┌──────────────────────────────┐   │
+│ │                              │   │
+│ │                              │   │
+│ │         Content Area         │   │
+│ │                              │   │
+│ │                              │   │
+│ └──────────────────────────────┘   │
+└────────────────────────────────────┘
 
-┌─────────────────────────────────────────────────────────────────────┐
-│                              Desktop                                │
-├─────────────────────────────────────────────────────────────────────┤
-│ ┌───────────────┐ ┌───────────────┐ ┌───────────────┐               │
-│ │ Status Card 1 │ │ Status Card 2 │ │ Status Card 3 │               │
-│ └───────────────┘ └───────────────┘ └───────────────┘               │
-│                                                                     │
-│ ┌─────────────────────────────────────────────────────────────────┐ │
-│ │                                                                 │ │
-│ │                                                                 │ │
-│ │                          Content Area                           │ │
-│ │                                                                 │ │
-│ │                                                                 │ │
-│ └─────────────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│                       Desktop View                          │
+├─────────────────────────────────────────────────────────────┤
+│ ┌────────────┐  ┌────────────┐  ┌────────────┐              │
+│ │Status Card1│  │Status Card2│  │Status Card3│              │
+│ └────────────┘  └────────────┘  └────────────┘              │
+│                                                             │
+│ ┌─────────────────────────────────────────────────────────┐ │
+│ │                                                         │ │
+│ │                                                         │ │
+│ │                      Content Area                       │ │
+│ │                                                         │ │
+│ │                                                         │ │
+│ └─────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 Implemented using Tailwind's responsive classes:
@@ -560,53 +567,12 @@ Implemented using Tailwind's responsive classes:
 </div>
 ```
 
-## Loading Animations
-
-The application features custom loading animations for different contexts:
-
-### Transaction Loader
-Visual representation of the transaction loader with animated elements:
-
-```
-┌───────────────────────────────────────────┐
-│                                           │
-│                 ╭───────╮                 │
-│              ╭──┤       ├──╮              │
-│          ╭───┤  │       │  ├───╮          │
-│         ╭┤   │  │   ◇   │  │   ├╮         │
-│         ││   │  │       │  │   ││         │
-│         ╰┤   │  │       │  │   ├╯         │
-│          ╰───┤  │       │  ├───╯          │
-│              ╰──┤       ├──╯              │
-│                 ╰───────╯                 │
-│                                           │
-│        Processing Transaction...          │
-│                                           │
-│   Please confirm in your wallet and wait  │
-│           for confirmation                │
-│                                           │
-└───────────────────────────────────────────┘
-```
-
-### Rate Calculation Indicator
-Inline loading animation for real-time calculations:
-
-```jsx
-{isLoadingRate ? (
-  <div className="flex items-center">
-    <div className="w-4 h-4 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mr-2"></div>
-    <span className="text-gray-500">Calculating...</span>
-  </div>
-) : (
-  <span className="font-bold">{parseFloat(expectedTokens).toFixed(2)} INSIGHT</span>
-)}
-```
-
 ## Development Workflow
 
 The project uses a structured development workflow:
 
 ```mermaid
+%%{init: {'theme':'neutral', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryTextColor': '#000000', 'primaryBorderColor': '#333333', 'lineColor': '#666666', 'fontFamily': 'arial'}}}%%
 graph LR
     SC[Smart Contract Development]
     FE[Frontend Development]
@@ -620,11 +586,14 @@ graph LR
     INT --> TEST
     TEST --> DEPLOY
     
-    classDef phase fill:#e6f7ff,stroke:#1890ff,stroke-width:2px;
-    class SC,FE,INT,TEST,DEPLOY phase;
+    style SC stroke-width:2px
+    style FE stroke-width:2px
+    style INT stroke-width:2px
+    style TEST stroke-width:2px
+    style DEPLOY stroke-width:2px
 ```
 
-1. **Smart Contract Development**: Write, test, and deploy contracts using solidity and foundry
+1. **Smart Contract Development**: Write, test, and deploy contracts using Solidity
 2. **Frontend Development**: Build UI components and pages
 3. **Integration**: Connect frontend to deployed contracts
 4. **Testing**: Comprehensive testing in testnet environment
@@ -633,4 +602,3 @@ graph LR
 ## Conclusion
 
 InsightTiers demonstrates a modern approach to building decentralized applications with React. By leveraging custom hooks, component composition, and effective state management, it creates a seamless user experience despite the complexities of blockchain interactions.
-
