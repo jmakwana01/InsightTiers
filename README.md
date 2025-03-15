@@ -291,9 +291,6 @@ graph TD
     SP --> SPS
     LP --> LPS
     
-    classDef globalState fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
-    classDef localState fill:#bad991,stroke:#83d01b,stroke-width:2px;
-    classDef component fill:#c2e0ff,stroke:#05a5d1,stroke-width:2px;
     
     class WS,TS globalState;
     class MPS,SPS,LPS localState;
