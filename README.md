@@ -312,7 +312,6 @@ State management approach:
 The application implements a robust transaction flow:
 
 ```mermaid
-%%{init: {'theme':'forest'}}%%
 sequenceDiagram
     participant User
     participant React App
@@ -369,7 +368,6 @@ const stakeTokens = async () => {
 The application implements a tier-based content delivery system:
 
 ```mermaid
-%%{init: {'theme':'forest'}}%%
 graph TD
     User([User])
     CheckTier{Check User Tier}
@@ -418,7 +416,7 @@ const ContentDisplay = ({ userTier }) => {
 The application implements several loading states to provide clear feedback during blockchain operations:
 
 ```mermaid
-%%{init: {'theme':'forest'}}%%
+
 stateDiagram-v2
     [*] --> Idle
     
@@ -450,7 +448,6 @@ stateDiagram-v2
 Visual representation of component relationships:
 
 ```mermaid
-%%{init: {'theme':'forest'}}%%
 classDiagram
     Component <|-- Button
     Component <|-- Card
@@ -613,7 +610,6 @@ Inline loading animation for real-time calculations:
 The project uses a structured development workflow:
 
 ```mermaid
-%%{init: {'theme':'forest'}}%%
 graph LR
     SC[Smart Contract Development]
     FE[Frontend Development]
