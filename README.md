@@ -30,9 +30,9 @@ graph TD
         SC
     end
     
-    classDef frontend fill:#d4f1f9,stroke:#05a5d1,stroke-width:2px;
+    classDef frontend fill:#c2e0ff,stroke:#05a5d1,stroke-width:2px;
     classDef web3 fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
-    classDef blockchain fill:#e6ffcc,stroke:#83d01b,stroke-width:2px;
+    classDef blockchain fill:#bad991,stroke:#83d01b,stroke-width:2px;
     
     class Web frontend;
     class WalletP web3;
@@ -142,7 +142,7 @@ graph TD
     Content --> GoldContent
     
     classDef container fill:#e6f7ff,stroke:#1890ff,stroke-width:2px;
-    classDef component fill:#f6ffed,stroke:#52c41a,stroke-width:2px;
+    classDef component fill:#e1eaff,stroke:#52c41a,stroke-width:2px;
     
     class App,Pages,Layout,UI,Content container;
     class Dashboard,LandingPage,MintPage,StakePage,Header,Footer,Button,Card,Input,Loader,BronzeContent,SilverContent,GoldContent component;
@@ -292,8 +292,8 @@ graph TD
     LP --> LPS
     
     classDef globalState fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
-    classDef localState fill:#e6ffcc,stroke:#83d01b,stroke-width:2px;
-    classDef component fill:#d4f1f9,stroke:#05a5d1,stroke-width:2px;
+    classDef localState fill:#bad991,stroke:#83d01b,stroke-width:2px;
+    classDef component fill:#c2e0ff,stroke:#05a5d1,stroke-width:2px;
     
     class WS,TS globalState;
     class MPS,SPS,LPS localState;
@@ -312,6 +312,7 @@ State management approach:
 The application implements a robust transaction flow:
 
 ```mermaid
+%%{init: {'theme':'forest'}}%%
 sequenceDiagram
     participant User
     participant React App
@@ -368,6 +369,7 @@ const stakeTokens = async () => {
 The application implements a tier-based content delivery system:
 
 ```mermaid
+%%{init: {'theme':'forest'}}%%
 graph TD
     User([User])
     CheckTier{Check User Tier}
@@ -388,7 +390,7 @@ graph TD
     Toggle -->|Select Gold| Gold
     
     classDef check fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
-    classDef content fill:#e6ffcc,stroke:#83d01b,stroke-width:2px;
+    classDef content fill:#bad991,stroke:#83d01b,stroke-width:2px;
     classDef noAccess fill:#f9d9d4,stroke:#d1605a,stroke-width:2px;
     
     class CheckTier,Toggle check;
@@ -416,6 +418,7 @@ const ContentDisplay = ({ userTier }) => {
 The application implements several loading states to provide clear feedback during blockchain operations:
 
 ```mermaid
+%%{init: {'theme':'forest'}}%%
 stateDiagram-v2
     [*] --> Idle
     
@@ -447,6 +450,7 @@ stateDiagram-v2
 Visual representation of component relationships:
 
 ```mermaid
+%%{init: {'theme':'forest'}}%%
 classDiagram
     Component <|-- Button
     Component <|-- Card
@@ -609,6 +613,7 @@ Inline loading animation for real-time calculations:
 The project uses a structured development workflow:
 
 ```mermaid
+%%{init: {'theme':'forest'}}%%
 graph LR
     SC[Smart Contract Development]
     FE[Frontend Development]
